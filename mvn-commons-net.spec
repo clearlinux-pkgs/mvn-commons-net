@@ -4,11 +4,13 @@
 #
 Name     : mvn-commons-net
 Version  : net.3.1
-Release  : 2
+Release  : 3
 URL      : https://github.com/apache/commons-net/archive/NET_3_1.tar.gz
 Source0  : https://github.com/apache/commons-net/archive/NET_3_1.tar.gz
 Source1  : https://repo1.maven.org/maven2/commons-net/commons-net/3.1/commons-net-3.1.jar
 Source2  : https://repo1.maven.org/maven2/commons-net/commons-net/3.1/commons-net-3.1.pom
+Source3  : https://repo1.maven.org/maven2/commons-net/commons-net/3.6/commons-net-3.6.jar
+Source4  : https://repo1.maven.org/maven2/commons-net/commons-net/3.6/commons-net-3.6.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
@@ -32,10 +34,16 @@ data components for the mvn-commons-net package.
 
 %install
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1
-cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1
+cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1/commons-net-3.1.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1
-cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1/commons-net-3.1.pom
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.6
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.6/commons-net-3.6.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.6
+cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.6/commons-net-3.6.pom
 
 
 %files
@@ -45,3 +53,5 @@ cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net
 %defattr(-,root,root,-)
 /usr/share/java/.m2/repository/commons-net/commons-net/3.1/commons-net-3.1.jar
 /usr/share/java/.m2/repository/commons-net/commons-net/3.1/commons-net-3.1.pom
+/usr/share/java/.m2/repository/commons-net/commons-net/3.6/commons-net-3.6.jar
+/usr/share/java/.m2/repository/commons-net/commons-net/3.6/commons-net-3.6.pom
