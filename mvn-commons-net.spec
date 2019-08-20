@@ -4,17 +4,20 @@
 #
 Name     : mvn-commons-net
 Version  : net.3.1
-Release  : 3
+Release  : 4
 URL      : https://github.com/apache/commons-net/archive/NET_3_1.tar.gz
 Source0  : https://github.com/apache/commons-net/archive/NET_3_1.tar.gz
-Source1  : https://repo1.maven.org/maven2/commons-net/commons-net/3.1/commons-net-3.1.jar
-Source2  : https://repo1.maven.org/maven2/commons-net/commons-net/3.1/commons-net-3.1.pom
-Source3  : https://repo1.maven.org/maven2/commons-net/commons-net/3.6/commons-net-3.6.jar
-Source4  : https://repo1.maven.org/maven2/commons-net/commons-net/3.6/commons-net-3.6.pom
+Source1  : https://repo.maven.apache.org/maven2/commons-net/commons-net/1.4.1/commons-net-1.4.1.jar
+Source2  : https://repo.maven.apache.org/maven2/commons-net/commons-net/1.4.1/commons-net-1.4.1.pom
+Source3  : https://repo1.maven.org/maven2/commons-net/commons-net/3.1/commons-net-3.1.jar
+Source4  : https://repo1.maven.org/maven2/commons-net/commons-net/3.1/commons-net-3.1.pom
+Source5  : https://repo1.maven.org/maven2/commons-net/commons-net/3.6/commons-net-3.6.jar
+Source6  : https://repo1.maven.org/maven2/commons-net/commons-net/3.6/commons-net-3.6.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: mvn-commons-net-data = %{version}-%{release}
+Requires: mvn-commons-net-license = %{version}-%{release}
 
 %description
 o Building
@@ -28,22 +31,39 @@ Group: Data
 data components for the mvn-commons-net package.
 
 
+%package license
+Summary: license components for the mvn-commons-net package.
+Group: Default
+
+%description license
+license components for the mvn-commons-net package.
+
+
 %prep
+%setup -q -n commons-net-NET_3_1
 
 %build
 
 %install
-mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1
-cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1/commons-net-3.1.jar
+mkdir -p %{buildroot}/usr/share/package-licenses/mvn-commons-net
+cp LICENSE.txt %{buildroot}/usr/share/package-licenses/mvn-commons-net/LICENSE.txt
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/1.4.1
+cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/1.4.1/commons-net-1.4.1.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/1.4.1
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/1.4.1/commons-net-1.4.1.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1
-cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1/commons-net-3.1.pom
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1/commons-net-3.1.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1
+cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.1/commons-net-3.1.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.6
-cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.6/commons-net-3.6.jar
+cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.6/commons-net-3.6.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.6
-cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.6/commons-net-3.6.pom
+cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net/3.6/commons-net-3.6.pom
 
 
 %files
@@ -51,7 +71,13 @@ cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/commons-net/commons-net
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/java/.m2/repository/commons-net/commons-net/1.4.1/commons-net-1.4.1.jar
+/usr/share/java/.m2/repository/commons-net/commons-net/1.4.1/commons-net-1.4.1.pom
 /usr/share/java/.m2/repository/commons-net/commons-net/3.1/commons-net-3.1.jar
 /usr/share/java/.m2/repository/commons-net/commons-net/3.1/commons-net-3.1.pom
 /usr/share/java/.m2/repository/commons-net/commons-net/3.6/commons-net-3.6.jar
 /usr/share/java/.m2/repository/commons-net/commons-net/3.6/commons-net-3.6.pom
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mvn-commons-net/LICENSE.txt
