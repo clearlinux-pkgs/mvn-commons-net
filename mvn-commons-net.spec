@@ -4,7 +4,7 @@
 #
 Name     : mvn-commons-net
 Version  : net.3.1
-Release  : 4
+Release  : 5
 URL      : https://github.com/apache/commons-net/archive/NET_3_1.tar.gz
 Source0  : https://github.com/apache/commons-net/archive/NET_3_1.tar.gz
 Source1  : https://repo.maven.apache.org/maven2/commons-net/commons-net/1.4.1/commons-net-1.4.1.jar
